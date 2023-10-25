@@ -1,7 +1,7 @@
 #Kullanıcının girdiği boy ve ağırlık değerlerine göre vücut kitle indeksini (VKİ = ağırlık/(boy*boy)) hesaplayınız.
 boy  = float(input("\nLütfen boyunuzu 'metre' cinsinden yazınız: "))
 kilo = float(input("\nLütfen ağırlığınızı 'kilogram' cinsinden yazınız: "))
-if boy >= 1.58 and kilo > 45:
+if boy >= 1.60 and kilo > 50:
     bki = round(kilo/(boy**2))
     if bki<=18.5:
         print(f"\nBeden kitle indeksiniz: {bki}, zayıfsınız")
