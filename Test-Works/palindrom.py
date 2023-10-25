@@ -4,6 +4,6 @@ ters=metin[::-1]
 print ("Girilen metnin tersi:" , ters)
 
 if ters == metin:
-    print("Girilen metin polindromdur.")
+    print("Girilen metin palindromdur.")
 else:
-    print("Girilen metin polindrom değildir.")    
+    print("Girilen metin palindrom değildir.")    
