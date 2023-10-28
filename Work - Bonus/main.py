@@ -12,4 +12,9 @@ print(type(faizOrani))
 mesaj = "Hoşgeldin"
 musteriAdi= "İlknur"
 musteriSoyadi = "Kartop"
-print(mesaj + musteriAdi + musteriSoyadi)
+sonucMesaj = mesaj + " " + musteriAdi + " " + musteriSoyadi
+print(sonucMesaj)
+
+sayi1 = 10
+sayi2 = 20 
+print(sayi1 + sayi2)
