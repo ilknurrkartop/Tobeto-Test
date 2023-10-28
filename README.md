@@ -1,1 +1,1 @@
-Tobeto Kalite ve Test Uzamnlığı
+Tobeto Kalite ve Test Uzmanlığı
