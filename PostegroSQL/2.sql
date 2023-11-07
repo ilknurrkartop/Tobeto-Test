@@ -28,3 +28,4 @@ right join orders on employees.employee_id = orders.employee_id
 select c.contact_name from customers c
 full outer join orders o on c.customer_id = o.customer_id
 
+--group by
