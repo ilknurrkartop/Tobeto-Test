@@ -29,3 +29,20 @@ select c.contact_name from customers c
 full outer join orders o on c.customer_id = o.customer_id
 
 --group by
+
+--her grubun toplam sipariş miktarını listeleyelim
+select product_id,SUM(quantity) from order_details
+group by product_id
+
+--hangi kategoride kaç ürün var?
+select category_name, count(*) from products p
+inner join categories c on p.category_id = c.category_id
+group by category_name
+
+--hangi ülkeye ne kadarlık satış yapılmış ? 
+select o.ship_country, SUM(od.quantity * od.unit_price) as total_price from orders o
+inner join order_details od on o.order_id = od.order_id
+group by o.ship_country
+order by total_price desc
+
+--having
