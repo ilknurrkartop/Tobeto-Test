@@ -46,3 +46,30 @@ group by o.ship_country
 order by total_price desc
 
 --having
+--filtreleme
+--görev ve işlem bakımından where'e benzer
+
+--toplam sipariş miktarı 1300 adetten fazla olan ürün kodlarını
+select product_id,SUM(quantity) from order_details
+group by product_id
+having SUM(quantity) > 1300
+
+--stok sayısı 20 den fazla -toplam ürün sayısı 1 den fazla olan kategorileri
+select category_id, units_in_stock,count(*) from products
+where units_in_stock >20
+group by category_id
+having count(*) >1
+
+--250 adetten fazla satılan ürünleri
+select product_id, SUM(quantity) as TotalQuantitySold
+from order_details
+group by product_id
+having SUM(quantity) > 250;
+
+--2.çözüm
+select product_name,SUM(quantity) from order_details od
+inner join products p on od.product_id=p.product_id
+group by product_name
+having sum(quantity) >250
+order by sum(quantity) desc
+
