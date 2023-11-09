@@ -34,7 +34,8 @@ WHERE product_id = ALL(Select product_id from order_details
 --ANY
 --Alt sorgu değerlerinden herhangi biri koşulu sağlıyorsa => TRUE
 Select product_name from products
-WHERE product_id = ANY(Select product_id from order_details
+WHERE product_id = ANY(Select distinct product_id from order_details
 					  where quantity>99)
 
-			
+
+
