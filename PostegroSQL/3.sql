@@ -24,5 +24,12 @@ inner join orders o ON e.employee_id = o.employee_id
 where o.order_date BETWEEN DATE '1998-05-03' AND DATE '1998-05-04'
 
 
+--ALL => Mantıksal operatörlerden biri
+--Tüm alt sorgu değerleri koşulu sağlıyorsa => TRUE
+
+Select product_name from products
+where product_id = ALL
+
+
 
 			
