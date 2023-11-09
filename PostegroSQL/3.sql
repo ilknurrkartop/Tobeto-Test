@@ -38,4 +38,9 @@ WHERE product_id = ANY(Select distinct product_id from order_details
 					  where quantity>99)
 
 
+--10 numaralı ID ye sahip ürünümden son 3 ayda ne kadarlık ciro sağladım?
+select product_id, SUM((unit_price*quantity)*(1-discount)) from order_details od
+inner join orders o on od.order_id = o.order_id
+where od.product_id = 10 and o.order_date >= (date '1998-05-31' - INTERVAL '3 months')
+group by product_id
 
