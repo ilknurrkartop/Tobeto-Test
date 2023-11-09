@@ -28,8 +28,13 @@ where o.order_date BETWEEN DATE '1998-05-03' AND DATE '1998-05-04'
 --Tüm alt sorgu değerleri koşulu sağlıyorsa => TRUE
 
 Select product_name from products
-where product_id = ALL
+WHERE product_id = ALL(Select product_id from order_details
+					  where quantity=10)
 
-
+--ANY
+--Alt sorgu değerlerinden herhangi biri koşulu sağlıyorsa => TRUE
+Select product_name from products
+WHERE product_id = ANY(Select product_id from order_details
+					  where quantity>99)
 
 			
