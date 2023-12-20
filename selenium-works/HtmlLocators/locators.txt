@@ -1,1 +1,121 @@
 Html Locators
+Locators(Konumlandırıcı), Selenium’ a hangi web tabanlı objeler üzerinde çalışması gerektiğini söyleyen bir komuttur. Doğru elementin tanımlanması, otomasyon oluşturmanın ön koşuludur. Site üzerindeki bir elemente örneğin giriş butonuna selenium ile tıklama işlemi yaptırmak istediğimizde bu işlemi locator’lar aracılığıyla yaparız. Selenium ile geliştirmek istediğimiz test otomasyonlarında locator’ları kullanarak ilgili alanlara veri gönderebilir, tıklama işlemi yaptırabilir, var olan içeriği temizleyebiliriz. Bunlar ‘By’ objesi olarak oluşturulur. En yaygın locator çeşitleri;
+
+ID
+Name
+ClassName
+TagName
+LinkText
+CssSelector
+XPath
+Web sitelerinde tagname’ler bulunur. Bu tagname’lerin sahip olduğu stil, name, id gibi attribute’ler vardır. Selenium’un anlayacağı şekilde nesneleri web elementlere çevirirken ilk önce id’si ve name’i var mı diye bakılır yok ise CssSelector ve Xpath ile nesneyi bulmaya çalışırız.
+
+Test otomasyonda kullanacağımız locator’lar için gerekli değerleri aşağıdaki gibi bulacağız. İstediğimiz nesneye sağ tıkla ile incele(inspect) alanına tıklıyoruz. İncele alanına tıkladıktan sonra objenin attribute’lerini göreceksiniz.
+
+
+
+Inspect’e tıklanan objenin özellikleri
+ID:
+ID, web sayfasında her öğeye özgü olduğu düşünülerek öğeleri bulmanın en yaygın yoludur. Id’nin değişken olup olmadığı sayfa yenilenerek tekrar ilgili elemente ulaşıp kontrol ederek anlaşılabilir.
+
+
+driver.findElement(By.id(“login-email”)).sendKeys(“abc@deneme.com”);
+
+Name:
+Selenium WebDriver’daki Name locator, ID gibi kullanılabilir.
+
+driver.findElement(By.name(“login-password”)).sendKeys(“parola12”);
+
+CSS Selector:
+
+Bir elementte ID ya da name ile ilgili bir bilgi yoksa veya bunlar değişken ise CSS selector ve Xpath ile elementi bulmaya çalışırız. Xpath ile karşılaştırıldığında CSS selector daha hızlı çalışmaktadır.
+
+Css Selector çeşitli biçimlerde bulunabilir:
+
+ID
+Öğeyi bulmak için 3 bileşen kullanırız.
+
+(Html etiketi) # (ID’nin değeri)
+
+
+Giriş yap alanını Css selector ile Tag ve ID ile bulmak için;
+
+driver.findElement(By.cssSelector(“a#login”))
+
+2. Class
+
+Bu locatorda ID gibi çalışır tek farkı # yerine nokta kullanılır.
+
+(Html etiketi) . (Class’ın değeri)
+
+
+Bu alanı Tag ve Class ile bulmak için;
+
+driver.findElement(By.cssSelector(“div.SearchBoxOld-buttonContainer”))
+
+3. Attribute Values
+
+Bu yöntemde de elementin tag name’i ve elemente özel olan bir özelliği(type, name vb.) kullanılarak css selector yazılır.
+
+(Html Tag)[Attribute=Value]
+
+
+XPATH:
+
+Xpath kısaca xml yolu olarak tanımlanır.
+
+Xpath=//tagname[@Attribute=‘Value’]
+
+tagname= Hedeflediğiniz elementin etiketi, örneğin bir giriş(input) etiketini ve ya bağlantı(anchor) etiketini, vb. belirtir.
+
+attribute= ‘@‘ ön eki ve karşılık gelen değerleri ile tanımlanır. Name, ID, Class vb.olabilir.
+
+1.Temel Xpath
+
+Xpath’in standart syntax’ı ile kullanımıdır.
+
+
+Xpath ile bulmak için;
+
+driver.findElement(By.xpath(“//a[@id=‘login’]”))
+
+
+Bu örnekte attribute olarak ID kullanılmıştır.
+
+2. Contains()
+
+Herhangi bir özelliğin değeri dinamik olarak değiştiğinde kullanılır.
+
+Contains kullanarak xpath’ini yazarsak;
+
+driver.findElement(By.xpath(“//input[contains(@class, ‘search-global’)]”))
+
+3. AND ve OR Kullanımı ile Xpath
+
+OR ifadesinde 1.koşulun ya da 2. Koşulun doğru olması yeterlidir. Her iki koşulun doğru olması durumunda da geçerlidir. AND ifadesinde iki koşul kullanılır, öğeyi bulmak için iki koşul da doğru olmalıdır. Herhangi bir koşul yanlışsa öne bulunamaz.
+
+//input[@id=‘value of id’ OR @name=‘value of name’]
+//input[@id=‘value of id’ AND @name=‘value of name’]
+
+driver.findElement(By.xpath(“//input[@name=‘q’ AND @type=‘text’]”))
+
+driver.findElement(By.xpath(“//input[@name=‘q’ OR @type=‘text’]”))
+
+4.Starts — with fonksiyonu
+
+Yenilenen veya web sayfasındaki diğer dinamik işlemlerle değiştirilen web öğesini bulmak için kullanılan bir işlevdir.
+
+
+//input[@id=‘value of id’ AND @name=‘value of name’]
+
+driver.findElement(By.xpath(“//input[starts-with(@name,’q’)]”))
+
+5.Text()
+
+Metin eşleşmesini kullanarak elementi bulmak için kullanılan bir yöntemdir.
+
+
+//div[text()=‘value of text’]
+
+driver.findElement(By.xpath(“//h2[text()=’Öne çıkanlar’]”))
+
