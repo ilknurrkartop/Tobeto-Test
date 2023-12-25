@@ -1,4 +1,4 @@
-
+PyTestde Decoratorleri
 Pytest, Python dilindeki testlerin yazılması ve yürütülmesi için kullanılan bir test çerçevesidir. Pytest, test fonksiyonlarına ve test davranışlarına özel işlevselliği eklemek ve kontrol etmek için çeşitli decorator'ları sağlar. 
 İşte Pytest'te kullanılan bazı yaygın decorator'ler:
 @pytest.fixture:
