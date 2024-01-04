@@ -1,0 +1,55 @@
+
+Selenium IDE (Integrated Development Environment), Selenium tarafından sağlanan bir tarayıcı otomasyon aracıdır. Selenium IDE, kullanıcıların web tarayıcısında otomatik test senaryoları oluşturmasını ve kaydetmesini sağlar. Selenium IDE, bir dizi "komut" veya "command" (İngilizce olarak) içerir. İşte Selenium IDE'deki bazı temel komutlar:
+
+open: Belirtilen bir URL'yi tarayıcıda açar.
+
+plaintext
+Copy code
+Command: open
+Target: /path/to/page.html
+click: Belirtilen bir öğeyi (link, düğme vb.) tıklar.
+
+plaintext
+Copy code
+Command: click
+Target: id=exampleButton
+type: Belirtilen bir alan veya form elemanına metin girer.
+
+plaintext
+Copy code
+Command: type
+Target: id=username
+Value: testuser
+verifyText: Belirtilen bir öğenin metin içeriğini kontrol eder.
+
+plaintext
+Copy code
+Command: verifyText
+Target: id=welcomeMessage
+Value: Welcome to the site!
+waitForElementPresent: Belirtilen bir öğenin sayfada görünmesini bekler.
+
+plaintext
+Copy code
+Command: waitForElementPresent
+Target: css=.exampleClass
+assertTitle: Sayfanın başlığını doğrular.
+
+plaintext
+Copy code
+Command: assertTitle
+Target: My Test Page
+store: Bir değeri değişkene atar.
+
+plaintext
+Copy code
+Command: store
+Target: MyValue
+Value: myVariable
+echo: Belirtilen bir metni konsola yazar.
+
+plaintext
+Copy code
+Command: echo
+Target: Hello, Selenium!
+Bu komutlar, Selenium IDE'nin kullanıcı dostu bir arayüz üzerinden kaydedilebilen ve düzenlenebilen test senaryolarını oluşturmak için kullanılır. Selenium IDE'nin güçlü bir özelliği, kullanıcılara otomatik olarak Selenium WebDriver ve programlama dillerine dönüştürme seçeneği sunmasıdır. Bu sayede Selenium IDE'de kaydedilen test senaryoları, daha karmaşık senaryolara genişletilebilir ve programlama dilleri kullanılarak daha fazla özelleştirilebilir.
