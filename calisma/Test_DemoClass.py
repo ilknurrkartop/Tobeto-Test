@@ -6,7 +6,7 @@ from time import sleep
 from selenium.webdriver.support.wait import WebDriverWait #beklediğim koşulu sağlayana kadar bekle, ilgili driverı bekleten yapı
 from selenium.webdriver.support import expected_conditions as ec #beklenen koşullar
 
-class Test_demoClass:
+class Test_DemoClass:
     def setup_method(self): #her test başlangıcında çalışacak fonksiyon.
         self.driver = webdriver.Chrome()
         self.driver.get("https://www.saucedemo.com")
@@ -15,9 +15,12 @@ class Test_demoClass:
     
     def teardown_method(self): #her testin bitiminde çalışacak fonk
         self.driver.quit()
+
+    def getData():
+        return [("1", "secret_sauce"),("problem_user","1")]
     
     
-    @pytest.mark.parametrize("username,password" , [("1", "secret_sauce"), ("problem_user", "1")])
+    @pytest.mark.parametrize("username,password" , getData())
     def test_invalid_login(self, username,password):
         usernameInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.ID , "user-name")))
         usernameInput.send_keys(username)
